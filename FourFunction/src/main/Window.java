@@ -3,6 +3,8 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -68,7 +70,7 @@ public class Window extends JFrame {
 		//Number buttons
 		numberButtons[0] = new JButton();
 		buttonPanel.add(numberButtons[0]);
-		numberButtons[0].addActionListener(null); //TODO
+		numberButtons[0].addActionListener(this::onNumberButtonPressed); //TODO
 		numberButtons[0].setText("0");
 		numberButtons[0].setBounds(115, 265, 60, 60);
 		
@@ -79,66 +81,79 @@ public class Window extends JFrame {
 			
 			numberButtons[i] = new JButton();
 			buttonPanel.add(numberButtons[i]);
-			numberButtons[i].addActionListener(null); //TODO
+			numberButtons[i].addActionListener(this::onNumberButtonPressed); //TODO
 			numberButtons[i].setText(String.valueOf(i));
 			numberButtons[i].setBounds(45 + 70 * mod3, 195 - 70 * div3, 60, 60);
 			
 		}
 		
 		buttonPanel.add(decimalButton);
-		decimalButton.addActionListener(null); //TODO
+		decimalButton.addActionListener(this::onDecimalButtonPressed);
 		decimalButton.setText(".");
 		decimalButton.setBounds(185, 265, 60, 60);
 		
 		buttonPanel.add(negativeButton);
-		negativeButton.addActionListener(null); //TODO
+		negativeButton.addActionListener(this::onNegativeButtonPressed);
 		negativeButton.setText("+ / -");
 		negativeButton.setBounds(45, 265, 60, 60);
 		
 		buttonPanel.add(exponentButton);
-		exponentButton.addActionListener(null); //TODO
+		exponentButton.addActionListener(this::onExponentButtonPressed);
 		exponentButton.setText("e");
 		exponentButton.setBounds(185, 10, 60, 30);
 		
-		
-		
 		buttonPanel.add(equalsButton);
-		equalsButton.addActionListener(null); //TODO
+		equalsButton.addActionListener(this::onEqualsButtonPressed);
 		equalsButton.setText("=");
 		equalsButton.setBounds(290, 265, 60, 55);
 		
 		buttonPanel.add(addButton);
-		addButton.addActionListener(null); //TODO
+		addButton.addActionListener(this::onAddButtonPressed);
 		addButton.setText("+");
 		addButton.setBounds(290, 195, 60, 55);
 		
 		buttonPanel.add(subtractButton);
-		subtractButton.addActionListener(null); //TODO
+		subtractButton.addActionListener(this::onSubtractButtonPressed);
 		subtractButton.setText("-");
 		subtractButton.setBounds(290, 135, 60, 55);
 		
 		buttonPanel.add(multiplyButton);
-		multiplyButton.addActionListener(null); //TODO
+		multiplyButton.addActionListener(this::onMultiplyButtonPressed);
 		multiplyButton.setText(String.valueOf((char)215));
 		multiplyButton.setBounds(290, 75, 60, 55);
 		
 		buttonPanel.add(divideButton);
-		divideButton.addActionListener(null); //TODO
+		divideButton.addActionListener(this::onDivideButtonPressed);
 		divideButton.setText(String.valueOf((char)247));
 		divideButton.setBounds(290, 15, 60, 55);
 		
-		
-		
 		buttonPanel.add(clearEntryButton);
-		clearEntryButton.addActionListener(null); //TODO
+		clearEntryButton.addActionListener(this::onClearEntryButtonPressed);
 		clearEntryButton.setText("CE");
 		clearEntryButton.setBounds(115, 10, 60, 30);
 		
 		buttonPanel.add(allClearButton);
-		allClearButton.addActionListener(null); //TODO
+		allClearButton.addActionListener(this::onAllClearEntryButtonPressed);
 		allClearButton.setText("AC");
 		allClearButton.setBounds(45, 10, 60, 30);
 		
 	}
+	
+	public void onNumberButtonPressed(ActionEvent e) {
+		JButton button = (JButton) e.getSource();
+		int number = Integer.valueOf(button.getText());
+		main.state.onNumberButtonPressed(number);
+	}
+	
+	public void onDecimalButtonPressed(ActionEvent e) {main.state.onDecimalButtonPressed();}
+	public void onNegativeButtonPressed(ActionEvent e) {main.state.onNegativeButtonPressed();}
+	public void onExponentButtonPressed(ActionEvent e) {main.state.onExponentButtonPressed();}
+	public void onEqualsButtonPressed(ActionEvent e) {main.state.onEqualsButtonPressed();}
+	public void onAddButtonPressed(ActionEvent e) {main.state.onAddButtonPressed();}
+	public void onSubtractButtonPressed(ActionEvent e) {main.state.onSubtractButtonPressed();}
+	public void onMultiplyButtonPressed(ActionEvent e) {main.state.onMultiplyButtonPressed();}
+	public void onDivideButtonPressed(ActionEvent e) {main.state.onDivideButtonPressed();}
+	public void onClearEntryButtonPressed(ActionEvent e) {main.state.onClearEntryButtonPressed();}
+	public void onAllClearEntryButtonPressed(ActionEvent e) {main.state.onAllClearEntryButtonPressed();}
 	
 }
