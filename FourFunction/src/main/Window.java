@@ -139,6 +139,14 @@ public class Window extends JFrame {
 		
 	}
 	
+	public void update() {
+		
+		displayText.setText(main.inputString.length()==0 ? "0" : main.inputString.toString());
+		this.repaint();
+		
+		
+	}
+	
 	public void onNumberButtonPressed(ActionEvent e) {
 		JButton button = (JButton) e.getSource();
 		int number = Integer.valueOf(button.getText());

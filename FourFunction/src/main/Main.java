@@ -1,22 +1,35 @@
 package main;
 
-import calculatorState.CalculatorState;
-import calculatorState.TestState;
+import calculatorState.*;
 
 public class Main {
 	
-	CalculatorState state;
+	public Window window;
 	
-	TestState testState;
+	public CalculatorState state;
+	
+	public TestState testState;
+	public DefaultState defaultState;
+	
+	public int mainValue;
+	public StringBuilder inputString;
 	
 	public Main() {
+		
 		testState = new TestState();
-		state = testState;
+		defaultState = new DefaultState(this);
+		
+		state = defaultState;
+		
+		mainValue = 0;
+		inputString = new StringBuilder();
+		
+		window = new Window(this);
+		
 	}
 	
 	public static void main(String[] args) {
-		Main main = new Main();
-		new Window(main);
+		new Main();
 	}
 
 }
